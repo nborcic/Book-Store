@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Exchange</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .upload-form {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .flash-messages {
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Book Exchange - Give One, Get One</h1>
+
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div class="flash-messages">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <div class="upload-form">
+      <h2>Upload a Book</h2>
+      <p>Supported formats: PDF, EPUB, MOBI (Max size: 16MB)</p>
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="book" accept=".pdf,.epub,.mobi" />
+        <input type="submit" value="Upload and Exchange" />
+      </form>
+    </div>
+  </body>
+</html>
